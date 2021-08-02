@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Samsung Gallery Android.iml" filepath="$PROJECT_DIR$/.idea/modules/Samsung Gallery Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Samsung_Gallery_Android.iml" filepath="$PROJECT_DIR$/.idea/modules/Samsung_Gallery_Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Samsung_Gallery_Android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Samsung_Gallery_Android.app.iml" />
     </modules>
   </component>
 </project>
