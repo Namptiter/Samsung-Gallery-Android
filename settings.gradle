@@ -1,0 +1,2 @@
+rootProject.name = "Samsung Gallery Android"
+include ':app'
