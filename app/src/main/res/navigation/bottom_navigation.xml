@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/picturesFragment">
+    <fragment
+        android:id="@+id/picturesFragment"
+        android:name="com.example.samsunggalleryandroid.PicturesFragment"
+        android:label="fragment_pictures"
+        tools:layout="@layout/fragment_pictures" />
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="com.example.samsunggalleryandroid.AlbumFragment"
+        android:label="fragment_album"
+        tools:layout="@layout/fragment_album" />
+    <fragment
+        android:id="@+id/storiesFragment"
+        android:name="com.example.samsunggalleryandroid.StoriesFragment"
+        android:label="fragment_stories"
+        tools:layout="@layout/fragment_stories" />
+    <fragment
+        android:id="@+id/shareFragment"
+        android:name="com.example.samsunggalleryandroid.ShareFragment"
+        android:label="fragment_share"
+        tools:layout="@layout/fragment_share" />
+</navigation>
