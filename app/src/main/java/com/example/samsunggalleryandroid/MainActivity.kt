@@ -1,16 +1,18 @@
 package com.example.samsunggalleryandroid
 
 import android.Manifest
+
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.viewModels
+import android.view.Menu
+import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewbinding.ViewBinding
 import com.example.samsunggalleryandroid.data.PicturesFragmentDataImg
 import com.example.samsunggalleryandroid.databinding.ActivityMainBinding
 import com.example.samsunggalleryandroid.model.FileViewModel
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private val shareFragment = ShareFragment()
 
     private lateinit var viewModel: FileViewModel
+
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,10 +51,12 @@ class MainActivity : AppCompatActivity() {
         //Add data to model view
         viewModel = ViewModelProvider(this).get(FileViewModel::class.java)
         viewModel.imageData = MutableLiveData(imgUri)
+        viewModel.max  = MutableLiveData(imgUri.size)
 
         //initial fragment
         setCurrentFragment(picturesFragment)
 
+        //switch fragment
         binding.bottomNavigationView.setOnItemSelectedListener{item->
             when(item.itemId){
                 R.id.menu_nav_pic -> {
@@ -78,9 +83,31 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    //Top menu
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.menu_copy -> {
+                true
+            }
+            R.id.menu_play -> {
+                true
+            }
+            R.id.menu_search -> {
+                true
+            }
+            R.id.menu_more -> {
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
     //Set fragment
-    private fun setCurrentFragment(fragment: Fragment) {
+    fun setCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.flFragment,fragment)
             commit()

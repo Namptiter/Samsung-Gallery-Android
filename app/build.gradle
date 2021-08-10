@@ -6,8 +6,11 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
+    }
+    dataBinding{
+        enabled = true
     }
     defaultConfig {
         applicationId "com.example.samsunggalleryandroid"
@@ -59,4 +62,9 @@ dependencies {
 
     //View model
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
+    implementation "androidx.lifecycle:lifecycle-runtime:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 }

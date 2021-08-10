@@ -6,4 +6,6 @@ import com.example.samsunggalleryandroid.data.PicturesFragmentDataImg
 
 class FileViewModel:ViewModel() {
     var imageData  = MutableLiveData<List<PicturesFragmentDataImg>>()
+    var position = MutableLiveData<Int>()
+    var max = MutableLiveData<Int>()
 }
