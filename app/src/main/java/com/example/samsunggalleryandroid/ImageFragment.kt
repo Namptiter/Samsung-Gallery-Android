@@ -2,10 +2,8 @@ package com.example.samsunggalleryandroid
 
 import android.net.Uri
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.lifecycle.MutableLiveData
@@ -103,6 +101,12 @@ class ImageFragment : Fragment() {
                 super.onSwipeDown()
                 setCurrentFragment(picturesFragment)
             }
+
+            override fun onSwipeUp() {
+                super.onSwipeUp()
+                val fr = ImageInfoFragment()
+                setCurrentFragment(fr)
+            }
         })
         view.findViewById<ImageView>(R.id.imageShow).setImageURI(imgUri)
         return view
@@ -112,5 +116,10 @@ class ImageFragment : Fragment() {
             replace(R.id.flFragment,fragment)
             commit()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu, menu)
     }
 }

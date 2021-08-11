@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: FileViewModel
 
-
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,25 +56,22 @@ class MainActivity : AppCompatActivity() {
         setCurrentFragment(picturesFragment)
 
         //switch fragment
+        supportActionBar?.hide()
         binding.bottomNavigationView.setOnItemSelectedListener{item->
             when(item.itemId){
                 R.id.menu_nav_pic -> {
-                    this.supportActionBar?.show()
                     setCurrentFragment(picturesFragment)
                     true
                 }
                 R.id.menu_nav_alb -> {
-                    this.supportActionBar?.hide()
                     setCurrentFragment(albumFragment)
                     true
                 }
                 R.id.menu_nav_sto -> {
-                    this.supportActionBar?.hide()
                     setCurrentFragment(storiesFragment)
                     true
                 }
                 R.id.menu_nav_shr -> {
-                    this.supportActionBar?.hide()
                     setCurrentFragment(shareFragment)
                     true
                 }
@@ -83,29 +79,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    //Top menu
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
-            R.id.menu_copy -> {
-                true
-            }
-            R.id.menu_play -> {
-                true
-            }
-            R.id.menu_search -> {
-                true
-            }
-            R.id.menu_more -> {
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
     //Set fragment
     fun setCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {

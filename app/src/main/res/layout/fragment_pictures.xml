@@ -3,15 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".PicturesFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_pictures"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+            android:scrollbars="vertical"
             app:layoutManager="LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/btn_month"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:scrollbars="vertical"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_week"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="5dp"
+            android:text="Week"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:backgroundTint="#EAEAEA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_month"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="month"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:backgroundTint="#EAEAEA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bnt_year"
+            app:layout_constraintStart_toEndOf="@+id/b_week" />
+
+        <Button
+            android:id="@+id/bnt_year"
+            android:layout_width="88dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="5dp"
+            android:text="year"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:backgroundTint="#EAEAEA"
+            app:iconTint="#7986CB"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

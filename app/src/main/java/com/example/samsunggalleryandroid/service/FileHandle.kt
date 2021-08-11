@@ -1,7 +1,9 @@
 package com.example.samsunggalleryandroid.service
 
 import android.net.Uri
+import android.os.Build
 import android.provider.MediaStore
+import androidx.annotation.RequiresApi
 import com.example.samsunggalleryandroid.MainActivity
 import com.example.samsunggalleryandroid.data.PicturesFragmentDataImg
 import java.util.*
@@ -15,7 +17,7 @@ class FileHandle {
             MediaStore.Images.Media.DISPLAY_NAME,
             MediaStore.Images.Media.SIZE,
             MediaStore.Images.Media.DATE_MODIFIED,
-            MediaStore.Images.Media._ID
+            MediaStore.Images.Media._ID,
         )
 
         val cursor = activity.getContentResolver().query(
@@ -33,11 +35,14 @@ class FileHandle {
             while (cursor.moveToNext()) {
                 val imageId:Long = cursor.getLong(columnIndexID)
                 val uriImage = Uri.withAppendedPath(uriExternal, "" + imageId)
-                val date:String = Date(cursor.getLong(timeID)*1000).toString().substring(4,7) + ", " + Date(cursor.getLong(timeID)*1000).toString().substring(8,10)
-                val fullDate: String = Date(cursor.getLong(timeID)*1000).toString()
+                val allDate = Date(cursor.getLong(timeID)*1000).toString()
+                val date:String = allDate.substring(8,10) + ", " + allDate.substring(4,7)
+                val Week: String = allDate.substring(0,3) + ", " + allDate.substring(4,7)+", "+allDate.substring(30,34)
+                val Month: String = allDate.substring(4,7)+", "+allDate.substring(30,34)
+                val Year: String = allDate.substring(30,34)
                 val size: Long = cursor.getLong(sizeID)
-                val name: String = cursor.getLong(nameID).toString()
-                imgPath.add(PicturesFragmentDataImg(uriImage,size,date,"Ha Noi","IMG",fullDate,name,count++))
+                val name: String = cursor.getString(nameID)
+                imgPath.add(PicturesFragmentDataImg(uriImage,size,date,"Ha Noi","IMG",allDate,name,count++,Week,Month,Year))
             }
             cursor.close()
         }
@@ -62,13 +67,16 @@ class FileHandle {
             val colVideoDate = videoCur.getColumnIndexOrThrow(MediaStore.Video.Media.DATE_MODIFIED)
             val colVideoId = videoCur.getColumnIndexOrThrow(MediaStore.Video.Media._ID)
             while (videoCur.moveToNext()){
-                val videoName = videoCur.getLong(colVideoName).toString()
+                val allDate = Date(videoCur.getLong(colVideoDate)*1000).toString()
+                val Week: String = allDate.substring(0,3) + ", " + allDate.substring(4,7)+", "+allDate.substring(30,34)
+                val Month: String = allDate.substring(4,7)+", "+allDate.substring(30,34)
+                val Year: String = allDate.substring(30,34)
+                val videoName = videoCur.getString(colVideoName)
                 val videoSize = videoCur.getLong(colVideoSize)
-                val videoDate = Date(videoCur.getLong(colVideoDate)*1000).toString().substring(4,7)+", "+Date(videoCur.getLong(colVideoDate)*1000).toString().substring(8,10)
-                val videoFullDate = Date(videoCur.getLong(colVideoDate)*1000).toString()
+                val videoDate = allDate.substring(4,7)+", "+allDate.substring(8,10)
                 val videoId = videoCur.getLong(colVideoId)
                 val videoUri = Uri.withAppendedPath(uriExternal, "" + videoId)
-                imgPath.add(PicturesFragmentDataImg(videoUri, videoSize, videoDate,"Ha Noi","VIDEO", videoFullDate, videoName,count++))
+                imgPath.add(PicturesFragmentDataImg(videoUri, videoSize, videoDate,"Ha Noi","VIDEO", allDate, videoName,count++,Week,Month,Year))
             }
             videoCur.close()
         }

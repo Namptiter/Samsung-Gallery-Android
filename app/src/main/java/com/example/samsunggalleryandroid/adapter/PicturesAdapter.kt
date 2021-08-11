@@ -80,7 +80,7 @@ class PicturesImgAdapter(private val context: Context,
             }
         }
         holder.ImgView.setOnClickListener {
-            itemClick.clickImage(dataset[position].count)
+            if(dataset[position].type=="IMG") itemClick.clickImage(dataset[position].count)
         }
     }
 
