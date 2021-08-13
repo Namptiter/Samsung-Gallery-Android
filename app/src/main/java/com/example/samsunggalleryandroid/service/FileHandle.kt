@@ -48,38 +48,38 @@ class FileHandle {
         }
 
         //Read video
-        uriExternal = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
-        imageProjection = arrayOf(
-            MediaStore.Video.Media.DISPLAY_NAME,
-            MediaStore.Video.Media.SIZE,
-            MediaStore.Video.Media.DATE_MODIFIED,
-            MediaStore.Video.Media._ID
-        )
-        val videoCur = activity.getContentResolver().query(
-            MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-            imageProjection,
-            null,
-            null,
-            null)
-        if(videoCur!=null){
-            val colVideoName = videoCur.getColumnIndexOrThrow(MediaStore.Video.Media.DISPLAY_NAME)
-            val colVideoSize = videoCur.getColumnIndexOrThrow(MediaStore.Video.Media.SIZE)
-            val colVideoDate = videoCur.getColumnIndexOrThrow(MediaStore.Video.Media.DATE_MODIFIED)
-            val colVideoId = videoCur.getColumnIndexOrThrow(MediaStore.Video.Media._ID)
-            while (videoCur.moveToNext()){
-                val allDate = Date(videoCur.getLong(colVideoDate)*1000).toString()
-                val Week: String = allDate.substring(0,3) + ", " + allDate.substring(4,7)+", "+allDate.substring(30,34)
-                val Month: String = allDate.substring(4,7)+", "+allDate.substring(30,34)
-                val Year: String = allDate.substring(30,34)
-                val videoName = videoCur.getString(colVideoName)
-                val videoSize = videoCur.getLong(colVideoSize)
-                val videoDate = allDate.substring(4,7)+", "+allDate.substring(8,10)
-                val videoId = videoCur.getLong(colVideoId)
-                val videoUri = Uri.withAppendedPath(uriExternal, "" + videoId)
-                imgPath.add(PicturesFragmentDataImg(videoUri, videoSize, videoDate,"Ha Noi","VIDEO", allDate, videoName,count++,Week,Month,Year))
-            }
-            videoCur.close()
-        }
+//        uriExternal = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+//        imageProjection = arrayOf(
+//            MediaStore.Video.Media.DISPLAY_NAME,
+//            MediaStore.Video.Media.SIZE,
+//            MediaStore.Video.Media.DATE_MODIFIED,
+//            MediaStore.Video.Media._ID
+//        )
+//        val videoCur = activity.getContentResolver().query(
+//            MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+//            imageProjection,
+//            null,
+//            null,
+//            null)
+//        if(videoCur!=null){
+//            val colVideoName = videoCur.getColumnIndexOrThrow(MediaStore.Video.Media.DISPLAY_NAME)
+//            val colVideoSize = videoCur.getColumnIndexOrThrow(MediaStore.Video.Media.SIZE)
+//            val colVideoDate = videoCur.getColumnIndexOrThrow(MediaStore.Video.Media.DATE_MODIFIED)
+//            val colVideoId = videoCur.getColumnIndexOrThrow(MediaStore.Video.Media._ID)
+//            while (videoCur.moveToNext()){
+//                val allDate = Date(videoCur.getLong(colVideoDate)*1000).toString()
+//                val Week: String = allDate.substring(0,3) + ", " + allDate.substring(4,7)+", "+allDate.substring(30,34)
+//                val Month: String = allDate.substring(4,7)+", "+allDate.substring(30,34)
+//                val Year: String = allDate.substring(30,34)
+//                val videoName = videoCur.getString(colVideoName)
+//                val videoSize = videoCur.getLong(colVideoSize)
+//                val videoDate = allDate.substring(4,7)+", "+allDate.substring(8,10)
+//                val videoId = videoCur.getLong(colVideoId)
+//                val videoUri = Uri.withAppendedPath(uriExternal, "" + videoId)
+//                imgPath.add(PicturesFragmentDataImg(videoUri, videoSize, videoDate,"Ha Noi","VIDEO", allDate, videoName,count++,Week,Month,Year))
+//            }
+//            videoCur.close()
+//        }
         return imgPath
     }
 }

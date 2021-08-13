@@ -308,7 +308,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/F:/Android%20studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/play_arrow/baseline_play_arrow_24.xml" />
+                                      <entry key="url" value="jar:file:/F:/Android%20studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/collections/baseline_collections_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -318,7 +318,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="play" />
+                            <entry key="outputName" value="cl" />
                             <entry key="sourceFile" value="F:\SamsungGalleryAndroid" />
                           </map>
                         </option>

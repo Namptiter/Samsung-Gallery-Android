@@ -7,5 +7,7 @@
     <color name="black">#000000</color>
     <color name="bnt">#EAEAEA</color>
     <color name="bntOn">#8BC34A</color>
-    <color name="backGround">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="backGround">#7CB342</color>
 </resources>
